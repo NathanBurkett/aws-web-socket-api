@@ -1,0 +1,50 @@
+{
+  "name": "web-socket-api",
+  "version": "0.1.0",
+  "workspaces": [
+    "app"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test": "jest",
+    "lint": "eslint lib/**/*.ts bin/**/*.ts test/**/*.ts",
+    "cdk-synth": "cdk synth",
+    "cdk-deploy": "cdk deploy --app 'cdk.out/' --outputs-file cdk-outputs.json",
+    "cdk-local-bootstrap": "cdklocal bootstrap",
+    "cdk-local-synth": "cdklocal synth local-poe-notification-services",
+    "cdk-local-deploy": "cdklocal deploy local-poe-notification-services --require-approval never",
+    "get-rest-apis": "awslocal apigateway get-rest-apis",
+    "put-local-env": "awslocal ssm put-parameter --name /poe-notification-services/env/config/local --type String --value file://local/env.json --overwrite",
+    "run-cdk-local": "npm run cdk-local-bootstrap && npm run put-local-env && npm run cdk-local-synth && npm run cdk-local-deploy",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "@aws-cdk/aws-apigatewayv2-alpha": "^2.93.0-alpha.0",
+    "@aws-cdk/aws-apigatewayv2-authorizers-alpha": "^2.93.0-alpha.0",
+    "@aws-cdk/aws-apigatewayv2-integrations-alpha": "^2.93.0-alpha.0",
+    "aws-cdk": "^2.88.0",
+    "aws-cdk-lib": "^2.88.0",
+    "aws-sdk": "^2.1422.0",
+    "esbuild": "^0.18.19",
+    "source-map-support": "^0.5.21",
+    "ts-node": "^10.9.1"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.119",
+    "@types/jest": "^29.5.3",
+    "@types/node": "18.15",
+    "@typescript-eslint/eslint-plugin": "^6.1.0",
+    "@typescript-eslint/parser": "^6.1.0",
+    "aws-cdk-local": "^2.18.0",
+    "eslint": "^8.45.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "husky": "^8.0.0",
+    "jest": "^29.6.1",
+    "lint-staged": "^13.2.3",
+    "prettier": "^3.0.0",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.1.6"
+  }
+}

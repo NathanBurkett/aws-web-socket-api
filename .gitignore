@@ -1,0 +1,9 @@
+/target/
+/app/target/
+/.idea/
+/cdk.out/
+**/node_modules/
+**/.DS_Store
+
+cdk.context.json
+coverage/
